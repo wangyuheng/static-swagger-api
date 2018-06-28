@@ -28,8 +28,12 @@ java_producer_coder -up-> json: push 接口json文件
 
 ```
 
+![s0](http://image.crick.wang/s0.png)
+
 1. 搭建swagger-ui服务
 2. 接口owner将swagger json文件上传至静态目录发布。swagger-ui内部包含nginx服务。
+
+在安装了docker的机器，通过`run.sh`可以执行镜像build及容器运行。
 
 ## 实现
 
