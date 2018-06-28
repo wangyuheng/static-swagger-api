@@ -1,0 +1,19 @@
+@startuml
+
+actor java_producer_coder
+actor java_consumer_coder
+actor js_consumer_coder
+
+cloud {
+    control nginx
+    node "swagger-ui" AS swagger #green
+    node "swagger-json" AS json
+}
+
+java_consumer_coder --> swagger
+js_consumer_coder --> swagger
+swagger -right-> nginx
+nginx -down-> json
+java_producer_coder -up-> json: push 接口json文件
+
+@enduml
