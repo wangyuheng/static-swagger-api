@@ -8,27 +8,7 @@
 
 ## 方案
 
-```plantuml
-
-actor java_producer_coder
-actor java_consumer_coder
-actor js_consumer_coder
-
-cloud {
-    control nginx
-    node "swagger-ui" AS swagger #green
-    node "swagger-json" AS json
-}
-
-java_consumer_coder --> swagger
-js_consumer_coder --> swagger
-swagger -right-> nginx
-nginx -down-> json
-java_producer_coder -up-> json: push 接口json文件
-
-```
-
-![s0](http://image.crick.wang/s0.png)
+![architecture](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/wangyuheng/static-swagger-api/master/.plantuml/architecture.puml)
 
 1. 搭建swagger-ui服务
 2. 接口owner将swagger json文件上传至静态目录发布。swagger-ui内部包含nginx服务。
@@ -58,7 +38,7 @@ COPY ./api/*.json /usr/share/nginx/html/
 ### 访问swagger
 浏览器访问swagger-ui服务，并在窗口输入json文件访问路径 https://localhost:8080/demo_api_2.json ，然后就可以看到swagger接口定义。
 
-![s1](http://image.crick.wang/s1.jpg)
+![sample_01](https://raw.githubusercontent.com/wangyuheng/static-swagger-api/master/.design/sample_01.png)
 
 ## 缺陷
 
@@ -77,5 +57,5 @@ COPY ./api/*.json /usr/share/nginx/html/
 ```
 
 效果图如下
-![s2](http://image.crick.wang/s2.png)
 
+![sample_02](https://raw.githubusercontent.com/wangyuheng/static-swagger-api/master/.design/sample_02.png)
