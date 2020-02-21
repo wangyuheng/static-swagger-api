@@ -1,0 +1,12 @@
+version: '3'
+services:
+  static-swagger-api:
+    build: .
+    ports:
+    - "8080:8080"
+    restart: always
+    environment:
+      API_URLS: "[{url: 'demo_api_1.json', name : '接口一'}, {url: 'demo_api_2.json', name : '接口二'}]"
+networks:
+  static-swagger-api:
+    driver: bridge
